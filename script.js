@@ -1,25 +1,29 @@
-const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+const radios = document.querySelectorAll('input[type="radio"]');
+const deltas = document.querySelectorAll('.delta');
 
-checkboxes.forEach(cb => {
-  cb.addEventListener('change', updateTotals);
-});
+radios.forEach(r => r.addEventListener('change', update));
 
-function sumGroup(group) {
-  let sum = 0;
-  document.querySelectorAll(`input[data-group="${group}"]:checked`)
-    .forEach(cb => sum += Number(cb.dataset.value));
-  return sum;
+function getValue(name) {
+  const selected = document.querySelector(`input[name="${name}"]:checked`);
+  return selected ? Number(selected.value) : 0;
 }
 
-function updateTotals() {
-  const proposedGroups = ['sb-p'];
-  const completedGroups = ['sb-c'];
+function update() {
+  let proposedTotal = 0;
+  let completedTotal = 0;
 
-  let proposedTotal = proposedGroups.reduce((a, g) => a + sumGroup(g), 0);
-  let completedTotal = completedGroups.reduce((a, g) => a + sumGroup(g), 0);
+  deltas.forEach(d => {
+    const p = getValue(d.dataset.p);
+    const c = getValue(d.dataset.c);
+
+    proposedTotal += p;
+    completedTotal += c;
+
+    d.textContent = p - c; // CHANGE DIRECTION FIXED
+  });
 
   document.getElementById('totalProposed').textContent = proposedTotal;
   document.getElementById('totalCompleted').textContent = completedTotal;
   document.getElementById('totalChange').textContent =
-    completedTotal - proposedTotal;
+    proposedTotal - completedTotal;
 }
