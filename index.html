@@ -7,131 +7,174 @@
 </head>
 <body>
 
-<h1>Response-Adapted Surgery in Sinonasal Cancer</h1>
+<div class="container">
+  <h1>Response-Adapted Surgery in Sinonasal Cancer</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Category</th>
-      <th>Proposed</th>
-      <th>Completed</th>
-      <th>Change</th>
-    </tr>
-  </thead>
+  <table>
+    <thead>
+      <tr>
+        <th>Category</th>
+        <th>Proposed</th>
+        <th>Completed</th>
+        <th>Change</th>
+      </tr>
+    </thead>
 
-  <tbody>
+    <tbody>
 
-    <!-- ================= Skull Base ================= -->
-    <tr class="section"><td colspan="4">Skull Base</td></tr>
-    <tr><td>Not required (0)</td>
-      <td><input type="radio" name="sb-p" value="0"></td>
-      <td><input type="radio" name="sb-c" value="0"></td>
-      <td rowspan="4" class="delta" data-p="sb-p" data-c="sb-c"></td></tr>
-    <tr><td>Anterior skull base bone (1)</td>
-      <td><input type="radio" name="sb-p" value="1"></td>
-      <td><input type="radio" name="sb-c" value="1"></td></tr>
-    <tr><td>Dura (2)</td>
-      <td><input type="radio" name="sb-p" value="2"></td>
-      <td><input type="radio" name="sb-c" value="2"></td></tr>
-    <tr><td>Brain (3)</td>
-      <td><input type="radio" name="sb-p" value="3"></td>
-      <td><input type="radio" name="sb-c" value="3"></td></tr>
+      <tr class="section"><td colspan="4">Skull Base</td></tr>
+      <tr>
+        <td>Not required (0)</td>
+        <td><input type="radio" name="sb-p" value="0"></td>
+        <td><input type="radio" name="sb-c" value="0"></td>
+        <td rowspan="4" class="delta" data-p="sb-p" data-c="sb-c"></td>
+      </tr>
+      <tr>
+        <td>Anterior skull base bone (1)</td>
+        <td><input type="radio" name="sb-p" value="1"></td>
+        <td><input type="radio" name="sb-c" value="1"></td>
+      </tr>
+      <tr>
+        <td>Dura (2)</td>
+        <td><input type="radio" name="sb-p" value="2"></td>
+        <td><input type="radio" name="sb-c" value="2"></td>
+      </tr>
+      <tr>
+        <td>Brain (3)</td>
+        <td><input type="radio" name="sb-p" value="3"></td>
+        <td><input type="radio" name="sb-c" value="3"></td>
+      </tr>
 
-    <!-- ================= Orbit ================= -->
-    <tr class="section"><td colspan="4">Orbit</td></tr>
-    <tr><td>Not required (0)</td>
-      <td><input type="radio" name="or-p" value="0"></td>
-      <td><input type="radio" name="or-c" value="0"></td>
-      <td rowspan="4" class="delta" data-p="or-p" data-c="or-c"></td></tr>
-    <tr><td>Medial wall resection (1)</td>
-      <td><input type="radio" name="or-p" value="1"></td>
-      <td><input type="radio" name="or-c" value="1"></td></tr>
-    <tr><td>Periorbital / extraconal fat (2)</td>
-      <td><input type="radio" name="or-p" value="2"></td>
-      <td><input type="radio" name="or-c" value="2"></td></tr>
-    <tr><td>Orbital exenteration (6)</td>
-      <td><input type="radio" name="or-p" value="6"></td>
-      <td><input type="radio" name="or-c" value="6"></td></tr>
+      <tr class="section"><td colspan="4">Orbit</td></tr>
+      <tr>
+        <td>Not required (0)</td>
+        <td><input type="radio" name="or-p" value="0"></td>
+        <td><input type="radio" name="or-c" value="0"></td>
+        <td rowspan="4" class="delta" data-p="or-p" data-c="or-c"></td>
+      </tr>
+      <tr>
+        <td>Medial wall resection (1)</td>
+        <td><input type="radio" name="or-p" value="1"></td>
+        <td><input type="radio" name="or-c" value="1"></td>
+      </tr>
+      <tr>
+        <td>Periorbital / extraconal fat (2)</td>
+        <td><input type="radio" name="or-p" value="2"></td>
+        <td><input type="radio" name="or-c" value="2"></td>
+      </tr>
+      <tr>
+        <td>Orbital exenteration (6)</td>
+        <td><input type="radio" name="or-p" value="6"></td>
+        <td><input type="radio" name="or-c" value="6"></td>
+      </tr>
 
-    <!-- ================= Maxilla ================= -->
-    <tr class="section"><td colspan="4">Maxilla</td></tr>
-    <tr><td>Not required (0)</td>
-      <td><input type="radio" name="mx-p" value="0"></td>
-      <td><input type="radio" name="mx-c" value="0"></td>
-      <td rowspan="4" class="delta" data-p="mx-p" data-c="mx-c"></td></tr>
-    <tr><td>Medial maxillectomy (1)</td>
-      <td><input type="radio" name="mx-p" value="1"></td>
-      <td><input type="radio" name="mx-c" value="1"></td></tr>
-    <tr><td>Inferior maxillectomy – palate unilateral (2)</td>
-      <td><input type="radio" name="mx-p" value="2"></td>
-      <td><input type="radio" name="mx-c" value="2"></td></tr>
-    <tr><td>Inferior maxillectomy – palate bilateral (3)</td>
-      <td><input type="radio" name="mx-p" value="3"></td>
-      <td><input type="radio" name="mx-c" value="3"></td></tr>
+      <tr class="section"><td colspan="4">Maxilla</td></tr>
+      <tr>
+        <td>Not required (0)</td>
+        <td><input type="radio" name="mx-p" value="0"></td>
+        <td><input type="radio" name="mx-c" value="0"></td>
+        <td rowspan="4" class="delta" data-p="mx-p" data-c="mx-c"></td>
+      </tr>
+      <tr>
+        <td>Medial maxillectomy (1)</td>
+        <td><input type="radio" name="mx-p" value="1"></td>
+        <td><input type="radio" name="mx-c" value="1"></td>
+      </tr>
+      <tr>
+        <td>Inferior maxillectomy – palate unilateral (2)</td>
+        <td><input type="radio" name="mx-p" value="2"></td>
+        <td><input type="radio" name="mx-c" value="2"></td>
+      </tr>
+      <tr>
+        <td>Inferior maxillectomy – palate bilateral (3)</td>
+        <td><input type="radio" name="mx-p" value="3"></td>
+        <td><input type="radio" name="mx-c" value="3"></td>
+      </tr>
 
-    <!-- ================= Skin ================= -->
-    <tr class="section"><td colspan="4">Skin Resection</td></tr>
-    <tr><td>Not required (0)</td>
-      <td><input type="radio" name="sk-p" value="0"></td>
-      <td><input type="radio" name="sk-c" value="0"></td>
-      <td rowspan="4" class="delta" data-p="sk-p" data-c="sk-c"></td></tr>
-    <tr><td>Skin of face: cheek / forehead (2)</td>
-      <td><input type="radio" name="sk-p" value="2"></td>
-      <td><input type="radio" name="sk-c" value="2"></td></tr>
-    <tr><td>Partial rhinectomy (3)</td>
-      <td><input type="radio" name="sk-p" value="3"></td>
-      <td><input type="radio" name="sk-c" value="3"></td></tr>
-    <tr><td>Total rhinectomy (5)</td>
-      <td><input type="radio" name="sk-p" value="5"></td>
-      <td><input type="radio" name="sk-c" value="5"></td></tr>
+      <tr class="section"><td colspan="4">Skin Resection</td></tr>
+      <tr>
+        <td>Not required (0)</td>
+        <td><input type="radio" name="sk-p" value="0"></td>
+        <td><input type="radio" name="sk-c" value="0"></td>
+        <td rowspan="4" class="delta" data-p="sk-p" data-c="sk-c"></td>
+      </tr>
+      <tr>
+        <td>Skin of face: cheek / forehead (2)</td>
+        <td><input type="radio" name="sk-p" value="2"></td>
+        <td><input type="radio" name="sk-c" value="2"></td>
+      </tr>
+      <tr>
+        <td>Partial rhinectomy (3)</td>
+        <td><input type="radio" name="sk-p" value="3"></td>
+        <td><input type="radio" name="sk-c" value="3"></td>
+      </tr>
+      <tr>
+        <td>Total rhinectomy (5)</td>
+        <td><input type="radio" name="sk-p" value="5"></td>
+        <td><input type="radio" name="sk-c" value="5"></td>
+      </tr>
 
-    <!-- ================= Exposure ================= -->
-    <tr class="section"><td colspan="4">Exposure</td></tr>
-    <tr><td>Endoscopic (0)</td>
-      <td><input type="radio" name="ex-p" value="0"></td>
-      <td><input type="radio" name="ex-c" value="0"></td>
-      <td rowspan="2" class="delta" data-p="ex-p" data-c="ex-c"></td></tr>
-    <tr><td>Trans-facial incision ± cheek flap (2)</td>
-      <td><input type="radio" name="ex-p" value="2"></td>
-      <td><input type="radio" name="ex-c" value="2"></td></tr>
+      <tr class="section"><td colspan="4">Exposure</td></tr>
+      <tr>
+        <td>Endoscopic (0)</td>
+        <td><input type="radio" name="ex-p" value="0"></td>
+        <td><input type="radio" name="ex-c" value="0"></td>
+        <td rowspan="2" class="delta" data-p="ex-p" data-c="ex-c"></td>
+      </tr>
+      <tr>
+        <td>Trans-facial incision ± cheek flap (2)</td>
+        <td><input type="radio" name="ex-p" value="2"></td>
+        <td><input type="radio" name="ex-c" value="2"></td>
+      </tr>
 
-    <!-- ================= Reconstruction ================= -->
-    <tr class="section"><td colspan="4">Reconstruction</td></tr>
-    <tr><td>Not required (0)</td>
-      <td><input type="radio" name="rc-p" value="0"></td>
-      <td><input type="radio" name="rc-c" value="0"></td>
-      <td rowspan="3" class="delta" data-p="rc-p" data-c="rc-c"></td></tr>
-    <tr><td>Regional flap (1)</td>
-      <td><input type="radio" name="rc-p" value="1"></td>
-      <td><input type="radio" name="rc-c" value="1"></td></tr>
-    <tr><td>Free flap (3)</td>
-      <td><input type="radio" name="rc-p" value="3"></td>
-      <td><input type="radio" name="rc-c" value="3"></td></tr>
+      <tr class="section"><td colspan="4">Reconstruction</td></tr>
+      <tr>
+        <td>Not required (0)</td>
+        <td><input type="radio" name="rc-p" value="0"></td>
+        <td><input type="radio" name="rc-c" value="0"></td>
+        <td rowspan="3" class="delta" data-p="rc-p" data-c="rc-c"></td>
+      </tr>
+      <tr>
+        <td>Regional flap (1)</td>
+        <td><input type="radio" name="rc-p" value="1"></td>
+        <td><input type="radio" name="rc-c" value="1"></td>
+      </tr>
+      <tr>
+        <td>Free flap (3)</td>
+        <td><input type="radio" name="rc-p" value="3"></td>
+        <td><input type="radio" name="rc-c" value="3"></td>
+      </tr>
 
-    <!-- ================= Neck ================= -->
-    <tr class="section"><td colspan="4">Neck Dissection</td></tr>
-    <tr><td>Not required (0)</td>
-      <td><input type="radio" name="nd-p" value="0"></td>
-      <td><input type="radio" name="nd-c" value="0"></td>
-      <td rowspan="3" class="delta" data-p="nd-p" data-c="nd-c"></td></tr>
-    <tr><td>Unilateral (1)</td>
-      <td><input type="radio" name="nd-p" value="1"></td>
-      <td><input type="radio" name="nd-c" value="1"></td></tr>
-    <tr><td>Bilateral (2)</td>
-      <td><input type="radio" name="nd-p" value="2"></td>
-      <td><input type="radio" name="nd-c" value="2"></td></tr>
+      <tr class="section"><td colspan="4">Neck Dissection</td></tr>
+      <tr>
+        <td>Not required (0)</td>
+        <td><input type="radio" name="nd-p" value="0"></td>
+        <td><input type="radio" name="nd-c" value="0"></td>
+        <td rowspan="3" class="delta" data-p="nd-p" data-c="nd-c"></td>
+      </tr>
+      <tr>
+        <td>Unilateral (1)</td>
+        <td><input type="radio" name="nd-p" value="1"></td>
+        <td><input type="radio" name="nd-c" value="1"></td>
+      </tr>
+      <tr>
+        <td>Bilateral (2)</td>
+        <td><input type="radio" name="nd-p" value="2"></td>
+        <td><input type="radio" name="nd-c" value="2"></td>
+      </tr>
 
-  </tbody>
+    </tbody>
 
-  <tfoot>
-    <tr>
-      <th>Total</th>
-      <th id="totalProposed">0</th>
-      <th id="totalCompleted">0</th>
-      <th id="totalChange">0</th>
-    </tr>
-  </tfoot>
-</table>
+    <tfoot>
+      <tr>
+        <th>Total</th>
+        <th id="totalProposed">0</th>
+        <th id="totalCompleted">0</th>
+        <th id="totalChange">0</th>
+      </tr>
+    </tfoot>
+  </table>
+</div>
 
 <script src="script.js"></script>
 </body>
