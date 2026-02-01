@@ -22,6 +22,7 @@
 
     <tbody>
 
+      <!-- Skull Base -->
       <tr class="section"><td colspan="4">Skull Base</td></tr>
       <tr>
         <td>Not required (0)</td>
@@ -45,6 +46,7 @@
         <td><input type="radio" name="sb-c" value="3"></td>
       </tr>
 
+      <!-- Orbit -->
       <tr class="section"><td colspan="4">Orbit</td></tr>
       <tr>
         <td>Not required (0)</td>
@@ -68,12 +70,13 @@
         <td><input type="radio" name="or-c" value="6"></td>
       </tr>
 
+      <!-- Maxilla -->
       <tr class="section"><td colspan="4">Maxilla</td></tr>
       <tr>
         <td>Not required (0)</td>
         <td><input type="radio" name="mx-p" value="0"></td>
         <td><input type="radio" name="mx-c" value="0"></td>
-        <td rowspan="4" class="delta" data-p="mx-p" data-c="mx-c"></td>
+        <td rowspan="5" class="delta" data-p="mx-p" data-c="mx-c"></td>
       </tr>
       <tr>
         <td>Medial maxillectomy (1)</td>
@@ -90,7 +93,13 @@
         <td><input type="radio" name="mx-p" value="3"></td>
         <td><input type="radio" name="mx-c" value="3"></td>
       </tr>
+      <tr>
+        <td>*Major floor of orbit resection (4)</td>
+        <td><input type="radio" name="mx-p" value="4"></td>
+        <td><input type="radio" name="mx-c" value="4"></td>
+      </tr>
 
+      <!-- Skin -->
       <tr class="section"><td colspan="4">Skin Resection</td></tr>
       <tr>
         <td>Not required (0)</td>
@@ -114,19 +123,34 @@
         <td><input type="radio" name="sk-c" value="5"></td>
       </tr>
 
-      <tr class="section"><td colspan="4">Exposure</td></tr>
+      <!-- Exposure -->
+      <tr class="section"><td colspan="4">Exposure – Facial</td></tr>
       <tr>
-        <td>Endoscopic (0)</td>
-        <td><input type="radio" name="ex-p" value="0"></td>
-        <td><input type="radio" name="ex-c" value="0"></td>
-        <td rowspan="2" class="delta" data-p="ex-p" data-c="ex-c"></td>
+        <td>Endoscopic resection (0)</td>
+        <td><input type="radio" name="ef-p" value="0"></td>
+        <td><input type="radio" name="ef-c" value="0"></td>
+        <td rowspan="2" class="delta" data-p="ef-p" data-c="ef-c"></td>
       </tr>
       <tr>
         <td>Trans-facial incision ± cheek flap (2)</td>
-        <td><input type="radio" name="ex-p" value="2"></td>
-        <td><input type="radio" name="ex-c" value="2"></td>
+        <td><input type="radio" name="ef-p" value="2"></td>
+        <td><input type="radio" name="ef-c" value="2"></td>
       </tr>
 
+      <tr class="section"><td colspan="4">Exposure – Cranial</td></tr>
+      <tr>
+        <td>Endoscopic (0)</td>
+        <td><input type="radio" name="ec-p" value="0"></td>
+        <td><input type="radio" name="ec-c" value="0"></td>
+        <td rowspan="2" class="delta" data-p="ec-p" data-c="ec-c"></td>
+      </tr>
+      <tr>
+        <td>Bicoronal craniotomy (3)</td>
+        <td><input type="radio" name="ec-p" value="3"></td>
+        <td><input type="radio" name="ec-c" value="3"></td>
+      </tr>
+
+      <!-- Reconstruction -->
       <tr class="section"><td colspan="4">Reconstruction</td></tr>
       <tr>
         <td>Not required (0)</td>
@@ -140,12 +164,13 @@
         <td><input type="radio" name="rc-c" value="1"></td>
       </tr>
       <tr>
-        <td>Free flap (3)</td>
+        <td>Free flap (add points)</td>
         <td><input type="radio" name="rc-p" value="3"></td>
         <td><input type="radio" name="rc-c" value="3"></td>
       </tr>
 
-      <tr class="section"><td colspan="4">Neck Dissection</td></tr>
+      <!-- Neck -->
+      <tr class="section"><td colspan="4">Lymph Node Basin Management</td></tr>
       <tr>
         <td>Not required (0)</td>
         <td><input type="radio" name="nd-p" value="0"></td>
@@ -174,6 +199,16 @@
       </tr>
     </tfoot>
   </table>
+
+  <div class="footnotes">
+    <p>* Major floor of orbit resection is defined as greater than 50%.</p>
+    <p>** Free flap is designated with individual points; if multiple free flaps are used, add points.</p>
+  </div>
+
+  <div class="disclaimer">
+    <p><strong>Disclaimer:</strong> Please be advised that this classification system is currently an investigational tool. As such, it should not be used to guide patient care or prognosis in a clinical setting. It is intended solely for educational or general informational purposes and does not constitute medical advice, diagnosis, or a treatment plan. It should not replace professional clinical judgment or consultation with a qualified healthcare provider. Usage of this tool implies acceptance that the creators are not liable for its application. We make no warranties regarding the accuracy, completeness, or currency of the data, as medical evidence is dynamic and subject to change. User data is not recorded or tracked.</p>
+  </div>
+
 </div>
 
 <script src="script.js"></script>
