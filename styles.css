@@ -60,6 +60,17 @@ input[type="radio"] {
   font-size: 0.95rem;
 }
 
+.footnotes {
+  margin-top: 10px;
+  font-size: 0.8rem;
+}
+
+.disclaimer {
+  margin-top: 18px;
+  font-size: 0.75rem;
+  color: #444;
+}
+
 @media (max-width: 768px) {
   html {
     font-size: 13px;
