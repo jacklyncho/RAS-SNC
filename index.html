@@ -22,7 +22,9 @@
 
     <tbody>
 
-      <!-- Skull Base -->
+      <!-- Structures Resected -->
+      <tr class="supersection"><td colspan="4">Structures Resected</td></tr>
+
       <tr class="section"><td colspan="4">Skull Base</td></tr>
       <tr>
         <td>Not required (0)</td>
@@ -46,7 +48,6 @@
         <td><input type="radio" name="sb-c" value="3"></td>
       </tr>
 
-      <!-- Orbit -->
       <tr class="section"><td colspan="4">Orbit</td></tr>
       <tr>
         <td>Not required (0)</td>
@@ -70,7 +71,6 @@
         <td><input type="radio" name="or-c" value="6"></td>
       </tr>
 
-      <!-- Maxilla -->
       <tr class="section"><td colspan="4">Maxilla</td></tr>
       <tr>
         <td>Not required (0)</td>
@@ -99,8 +99,7 @@
         <td><input type="radio" name="mx-c" value="4"></td>
       </tr>
 
-      <!-- Skin -->
-      <tr class="section"><td colspan="4">Skin Resection</td></tr>
+      <tr class="section"><td colspan="4">Skin resection</td></tr>
       <tr>
         <td>Not required (0)</td>
         <td><input type="radio" name="sk-p" value="0"></td>
@@ -108,7 +107,7 @@
         <td rowspan="4" class="delta" data-p="sk-p" data-c="sk-c"></td>
       </tr>
       <tr>
-        <td>Skin of face: cheek / forehead (2)</td>
+        <td>Skin of face; cheek/ forehead (2)</td>
         <td><input type="radio" name="sk-p" value="2"></td>
         <td><input type="radio" name="sk-c" value="2"></td>
       </tr>
@@ -124,7 +123,9 @@
       </tr>
 
       <!-- Exposure -->
-      <tr class="section"><td colspan="4">Exposure – Facial</td></tr>
+      <tr class="supersection"><td colspan="4">Exposure</td></tr>
+
+      <tr class="section"><td colspan="4">Facial</td></tr>
       <tr>
         <td>Endoscopic resection (0)</td>
         <td><input type="radio" name="ef-p" value="0"></td>
@@ -132,12 +133,12 @@
         <td rowspan="2" class="delta" data-p="ef-p" data-c="ef-c"></td>
       </tr>
       <tr>
-        <td>Trans-facial incision ± cheek flap (2)</td>
+        <td>Trans-facial incision +/- cheek flap (2)</td>
         <td><input type="radio" name="ef-p" value="2"></td>
         <td><input type="radio" name="ef-c" value="2"></td>
       </tr>
 
-      <tr class="section"><td colspan="4">Exposure – Cranial</td></tr>
+      <tr class="section"><td colspan="4">Cranial</td></tr>
       <tr>
         <td>Endoscopic (0)</td>
         <td><input type="radio" name="ec-p" value="0"></td>
@@ -151,26 +152,48 @@
       </tr>
 
       <!-- Reconstruction -->
-      <tr class="section"><td colspan="4">Reconstruction</td></tr>
+      <tr class="supersection"><td colspan="4">Reconstruction</td></tr>
+
+      <tr class="section"><td colspan="4">Regional flap</td></tr>
       <tr>
         <td>Not required (0)</td>
-        <td><input type="radio" name="rc-p" value="0"></td>
-        <td><input type="radio" name="rc-c" value="0"></td>
-        <td rowspan="3" class="delta" data-p="rc-p" data-c="rc-c"></td>
+        <td><input type="radio" name="rf-p" value="0"></td>
+        <td><input type="radio" name="rf-c" value="0"></td>
+        <td rowspan="3" class="delta" data-p="rf-p" data-c="rf-c"></td>
       </tr>
       <tr>
-        <td>Regional flap (1)</td>
-        <td><input type="radio" name="rc-p" value="1"></td>
-        <td><input type="radio" name="rc-c" value="1"></td>
+        <td>Nasoseptal flap (1)</td>
+        <td><input type="radio" name="rf-p" value="1"></td>
+        <td><input type="radio" name="rf-c" value="1"></td>
       </tr>
       <tr>
-        <td>Free flap (add points)</td>
-        <td><input type="radio" name="rc-p" value="3"></td>
-        <td><input type="radio" name="rc-c" value="3"></td>
+        <td>Pericranial flap (1)</td>
+        <td><input type="radio" name="rf-p" value="1"></td>
+        <td><input type="radio" name="rf-c" value="1"></td>
       </tr>
 
-      <!-- Neck -->
-      <tr class="section"><td colspan="4">Lymph Node Basin Management</td></tr>
+      <tr class="section"><td colspan="4">**Free flap (add points together)</td></tr>
+      <tr>
+        <td>Not required (0)</td>
+        <td><input type="checkbox" name="ff-p" value="0" data-none="true"></td>
+        <td><input type="checkbox" name="ff-c" value="0" data-none="true"></td>
+        <td rowspan="3" class="delta" data-p="ff-p" data-c="ff-c"></td>
+      </tr>
+      <tr>
+        <td>Soft tissue (3)</td>
+        <td><input type="checkbox" name="ff-p" value="3"></td>
+        <td><input type="checkbox" name="ff-c" value="3"></td>
+      </tr>
+      <tr>
+        <td>Bone (4)</td>
+        <td><input type="checkbox" name="ff-p" value="4"></td>
+        <td><input type="checkbox" name="ff-c" value="4"></td>
+      </tr>
+
+      <!-- Lymph Node Basin Management -->
+      <tr class="supersection"><td colspan="4">Lymph Node Basin Management</td></tr>
+
+      <tr class="section"><td colspan="4">Neck dissection</td></tr>
       <tr>
         <td>Not required (0)</td>
         <td><input type="radio" name="nd-p" value="0"></td>
