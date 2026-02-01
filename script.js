@@ -19,7 +19,7 @@ function update() {
     proposedTotal += p;
     completedTotal += c;
 
-    d.textContent = p - c; // CHANGE DIRECTION FIXED
+    d.textContent = p - c;
   });
 
   document.getElementById('totalProposed').textContent = proposedTotal;
