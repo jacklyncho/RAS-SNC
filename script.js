@@ -3,22 +3,22 @@ const deltas = document.querySelectorAll('.delta');
 const exportBtn = document.getElementById('exportBtn');
 
 inputs.forEach(i => i.addEventListener('change', update));
-exportBtn.addEventListener('click', exportToExcel);
+if (exportBtn) exportBtn.addEventListener('click', exportToXlsx);
 
 /* ---------- CORE SCORING ---------- */
 
 function sumChecked(name) {
-  const checked = Array.from(document.querySelectorAll(`input[name="${name}"]:checked`));
+  const boxes = Array.from(document.querySelectorAll(`input[name="${name}"][type="checkbox"]`));
+  const checked = boxes.filter(b => b.checked);
 
+  // "Not required (0)" logic
   const none = checked.find(el => el.dataset.none === "true");
   if (none) {
-    Array.from(document.querySelectorAll(`input[name="${name}"]`)).forEach(el => {
-      if (el !== none) el.checked = false;
-    });
+    boxes.forEach(el => { if (el !== none) el.checked = false; });
     return 0;
   }
 
-  const noneBox = document.querySelector(`input[name="${name}"][data-none="true"]`);
+  const noneBox = boxes.find(el => el.dataset.none === "true");
   if (noneBox) noneBox.checked = false;
 
   return checked.reduce((acc, el) => acc + Number(el.value || 0), 0);
@@ -32,20 +32,25 @@ function getValue(name) {
   return selected ? Number(selected.value) : 0;
 }
 
-function getLabel(name) {
-  const radios = document.querySelectorAll(`input[name="${name}"]`);
-  const checkboxes = document.querySelectorAll(`input[name="${name}"][type="checkbox"]`);
+function getSelectedText(name) {
+  const anyCheckbox = document.querySelector(`input[name="${name}"][type="checkbox"]`);
+  if (anyCheckbox) {
+    const boxes = Array.from(document.querySelectorAll(`input[name="${name}"][type="checkbox"]`));
+    const checked = boxes.filter(b => b.checked);
 
-  if (checkboxes.length) {
-    const checked = Array.from(checkboxes).filter(c => c.checked && !c.dataset.none);
-    return checked.length
-      ? checked.map(c => c.closest('tr').children[0].textContent).join(' + ')
-      : 'Not required';
+    // If none selected OR "none" selected
+    if (checked.length === 0) return 'Not selected';
+    if (checked.some(b => b.dataset.none === "true")) return 'Not required (0)';
+
+    return checked
+      .map(b => (b.closest('tr')?.children?.[0]?.textContent || '').trim())
+      .filter(Boolean)
+      .join(' + ');
   }
 
-  const selected = Array.from(radios).find(r => r.checked);
+  const selected = document.querySelector(`input[name="${name}"]:checked`);
   return selected
-    ? selected.closest('tr').children[0].textContent
+    ? (selected.closest('tr')?.children?.[0]?.textContent || 'Selected').trim()
     : 'Not selected';
 }
 
@@ -60,22 +65,27 @@ function update() {
     proposedTotal += p;
     completedTotal += c;
 
-    d.textContent = p - c;
+    d.textContent = p - c; // Proposed − Completed
   });
 
   document.getElementById('totalProposed').textContent = proposedTotal;
   document.getElementById('totalCompleted').textContent = completedTotal;
-  document.getElementById('totalChange').textContent =
-    proposedTotal - completedTotal;
+  document.getElementById('totalChange').textContent = proposedTotal - completedTotal;
 }
 
-/* ---------- EXCEL EXPORT ---------- */
+/* ---------- XLSX EXPORT (REAL EXCEL FILE) ---------- */
 
-function exportToExcel() {
-  const rows = [];
-  rows.push([
+function exportToXlsx() {
+  if (typeof XLSX === 'undefined') {
+    alert('XLSX export library failed to load. Check the SheetJS <script> tag in index.html.');
+    return;
+  }
+
+  // Build an array-of-arrays (AOA) = rows/columns
+  const aoa = [];
+  aoa.push([
+    'Group Heading',
     'Section',
-    'Category',
     'Proposed',
     'Completed',
     'Proposed Score',
@@ -83,55 +93,89 @@ function exportToExcel() {
     'Change'
   ]);
 
+  // We’ll walk through each delta cell and derive:
+  // - closest heading rows above it
+  // - section title (the section header just above this block)
   deltas.forEach(d => {
     const pName = d.dataset.p;
     const cName = d.dataset.c;
 
-    const section = d.closest('tbody')
-      .querySelector('tr.supersection:last-of-type td')?.textContent || '';
+    const tr = d.closest('tr');
 
-    const category = d.closest('tr').previousElementSibling
-      ? d.closest('tr').previousElementSibling.children[0].textContent
-      : '';
+    // Find the nearest section header above this block
+    // (the row with class "section" prior to current row)
+    let section = '';
+    let groupHeading = '';
+
+    let cursor = tr.previousElementSibling;
+    while (cursor) {
+      if (!section && cursor.classList.contains('section')) {
+        section = (cursor.textContent || '').trim();
+      }
+      if (!groupHeading && cursor.classList.contains('supersection')) {
+        groupHeading = (cursor.textContent || '').trim();
+        break; // once group heading found, we can stop
+      }
+      cursor = cursor.previousElementSibling;
+    }
+
+    // Category label = first column text of the row that contains the delta
+    // Note: delta is in the first row of each section block (rowspan cell)
+    const category = (tr.children[0]?.textContent || '').trim();
 
     const pVal = getValue(pName);
     const cVal = getValue(cName);
 
-    rows.push([
+    aoa.push([
+      groupHeading,
       section,
-      category,
-      getLabel(pName),
-      getLabel(cName),
+      getSelectedText(pName),
+      getSelectedText(cName),
       pVal,
       cVal,
       pVal - cVal
     ]);
   });
 
-  rows.push([]);
-  rows.push([
+  // Totals row
+  aoa.push([]);
+  aoa.push([
     'TOTAL',
     '',
     '',
     '',
-    document.getElementById('totalProposed').textContent,
-    document.getElementById('totalCompleted').textContent,
-    document.getElementById('totalChange').textContent
+    Number(document.getElementById('totalProposed').textContent || 0),
+    Number(document.getElementById('totalCompleted').textContent || 0),
+    Number(document.getElementById('totalChange').textContent || 0)
   ]);
 
-  downloadExcel(rows);
-}
+  // Create workbook + worksheet
+  const ws = XLSX.utils.aoa_to_sheet(aoa);
 
-function downloadExcel(data) {
-  const worksheet = data.map(r => r.join('\t')).join('\n');
-  const blob = new Blob([worksheet], {
-    type: 'application/vnd.ms-excel'
-  });
+  // Make it a little nicer: set column widths
+  ws['!cols'] = [
+    { wch: 22 }, // Group Heading
+    { wch: 18 }, // Section
+    { wch: 38 }, // Proposed
+    { wch: 38 }, // Completed
+    { wch: 14 }, // Proposed Score
+    { wch: 15 }, // Completed Score
+    { wch: 10 }  // Change
+  ];
 
-  const link = document.createElement('a');
-  link.href = URL.createObjectURL(blob);
-  link.download = 'RAS-SNC_Score.xlsx';
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, 'RAS-SNC');
+
+  // Timestamped filename
+  const now = new Date();
+  const stamp = [
+    now.getFullYear(),
+    String(now.getMonth() + 1).padStart(2, '0'),
+    String(now.getDate()).padStart(2, '0'),
+    '_',
+    String(now.getHours()).padStart(2, '0'),
+    String(now.getMinutes()).padStart(2, '0')
+  ].join('');
+
+  XLSX.writeFile(wb, `RAS-SNC_${stamp}.xlsx`);
 }
